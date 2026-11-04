@@ -50,6 +50,13 @@ export function validateState(input) {
     }
   }
   const mids=new Set(s.materials.map(x=>x.id)),pids=new Set(s.plans.map(x=>x.id));
+  for(const p of s.plans) if(p.selectedRanges!==undefined){
+    if(!Array.isArray(p.selectedRanges)||p.selectedRanges.length>s.materials.length||new Set(p.selectedRanges.map(r=>r?.materialId)).size!==p.selectedRanges.length)bad();
+    for(const range of p.selectedRanges){
+      const m=s.materials.find(m=>m.id===range?.materialId);
+      if(!m||!integer(range.start,m.start,m.end)||!integer(range.end,range.start,m.end))bad();
+    }
+  }
   for(const p of s.plans) if(!str(p.title,100)||!validDate(p.startDate)||!validDate(p.endDate)||p.startDate>p.endDate||!['even','increase'].includes(p.distribution)||!Array.isArray(p.weeklyMinutes)||p.weeklyMinutes.length!==7||p.weeklyMinutes.some(n=>!integer(n,0,1440))||!Array.isArray(p.unscheduled)||p.unscheduled.length>50000) bad();
   const occupied=new Map();
   for(const t of s.tasks) {

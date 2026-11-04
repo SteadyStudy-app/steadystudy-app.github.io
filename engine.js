@@ -24,9 +24,12 @@ export function validDate(s) {
 export function remainingRanges(task) {
   return task.completed < task.end-task.start+1 ? [{...task,start:task.start+task.completed,completed:0}] : [];
 }
-export function materialUnits(material, occupied=[]) {
+export function materialUnits(material, occupied=[], range={start:material.start,end:material.end}) {
+  if(!Number.isSafeInteger(range.start)||!Number.isSafeInteger(range.end)||range.start<material.start||range.end>material.end||range.start>range.end) {
+    throw Error(`${material.title}：開始・終了番号を教材の範囲内で指定してください。`);
+  }
   const units=[];
-  for(let n=material.start;n<=material.end;n++) {
+  for(let n=range.start;n<=range.end;n++) {
     if(occupied.some(t=>t.materialId===material.id && n>=t.start && n<=t.end)) continue;
     const section=material.sections.find(s=>n>=s.start && n<=s.end);
     units.push({materialId:material.id,title:section?.title || '学習範囲',section:section?.id || 'unsectioned',n,minutes:material.minutesPerUnit});
