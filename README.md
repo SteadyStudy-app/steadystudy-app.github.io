@@ -1,4 +1,4 @@
-# SteadyStudy — Prototype v0.2.1
+# SteadyStudy — Prototype v0.2.2
 
 スマホ・PC対応、アカウント不要の学習プランナー。実行時の外部ライブラリ、CDN、API、アクセス解析はありません。教材・目次・計画・実績はIndexedDBに保存します。ライト／ダーク、6種類のアクセントカラーを選択できます。
 
