@@ -1,6 +1,6 @@
 const BASE=new URL('./',self.location.href);
 const PREFIX=`steadystudy-${encodeURIComponent(BASE.pathname)}-`;
-const CACHE=PREFIX+'v0-2-3';
+const CACHE=PREFIX+'v0-2-4';
 const FILES=['./','./index.html','./styles.css','./app.js','./engine.js','./store.js','./manifest.webmanifest','./assets/icon.svg','./assets/favicon-48.png','./assets/icon-192.png','./assets/icon-512.png','./assets/icon-maskable.png'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES.map(f=>new URL(f,BASE).href))));
