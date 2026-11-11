@@ -18,3 +18,9 @@ body{background:var(--bg);color:var(--ink)}.sidebar{background:var(--bg)}.nav bu
 .range-card{background:var(--paper);border:1px solid var(--line);border-radius:10px;margin-top:12px;padding:0 13px 13px}.range-card .check-row{border:0;padding:12px 0;margin:0}.range-fields{border:0;padding:0;margin:0;min-width:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}.range-fields:disabled{opacity:.5}.range-fields .field.full{grid-column:1/-1}.range-summary{font-size:11px;color:var(--muted);margin-top:10px}.scope-summary{border:1px solid var(--line);background:var(--paper);padding:12px 15px;border-radius:9px;margin:16px 0;font-size:12px}.scope-summary p+p{margin-top:8px}
 .brand-icon{width:43px;height:35px;border-radius:0;background:var(--accent);-webkit-mask:url('./assets/icon.svg') center/contain no-repeat;mask:url('./assets/icon.svg') center/contain no-repeat}.brand-icon svg{display:none}.mobile-brand .brand-icon{width:34px;height:27px;border-radius:0}
 .brand small{font-size:9px;letter-spacing:1.2px;white-space:nowrap}
+
+/* Pale add buttons with an explicit, readable plus symbol. */
+.btn.primary:has(.icon-plus){background:var(--soft);color:var(--accent);border-color:color-mix(in srgb,var(--accent) 24%,var(--paper))}
+.btn.primary:has(.icon-plus):hover{background:color-mix(in srgb,var(--accent) 17%,var(--paper));filter:none}
+.task-check:not(.done){background:var(--soft);color:var(--accent);border-color:color-mix(in srgb,var(--accent) 30%,var(--paper))}
+.btn .icon-plus,.task-check .icon-plus{color:inherit;stroke:currentColor;stroke-width:2.25;opacity:1}
